@@ -1,0 +1,29 @@
+#
+# look and feel for the bottom two lines.
+#
+#caption     always        "%{+b rk}%H%{gk} |%c %{yk}%d.%m.%Y | %72=Load: %l %{wk}"
+#hardstatus alwayslastline "%?%{yk}%-Lw%?%{wb}%n*%f %t%?(%u)%?%?%{yk}%+Lw%?"
+
+
+## backticks to display information in the statusbar
+#
+#this command has bug, it doesn't show used MEM
+#backtick 1 0 0 /usr/local/bin/screen-mem-usage
+#
+#mem.sh:
+#"free -m |awk 'FNR==2{print $3,$2}'"
+backtick 1 0 1 /home/user/mem.sh
+backtick 2 0 0 /usr/local/bin/screen-cpu-usage
+
+hardstatus alwayslastline
+#hardstatus string '%{ky}%-w%{= BW}%50>%n %t%{-}%+w%< %{kg}Host:%{kG}%H%{kg} %=%{kb}Mem:%{kB}%1`  %{ky}Cpu:%{kY}%2`%%  %{kR}Load:%{kr}%l%=%{kc} %D %m/%d %{kC}%C%a%{w}'
+#Change color and arrangement
+hardstatus string '%{kC}%-w%{= BW}%50>%n %t%{-}%+w%< %{kg}Host:%{kg}%H %{kB}Mem:%1` %{kY}Cpu:%{kY}%2`%%  %{kR}Load:%{kr}%l%{kc} %=%D %m/%d %{kC}%C%a%{w}'
+
+
+
+#hardstatus alwayslastline
+#hardstatus on
+#hardstatus string "%-w%{= BW}%50>%n %t%{-}%+w%<"
+#
+altscreen on

@@ -1,0 +1,11 @@
+--- screen-mem-usage.bak	2019-01-31 13:51:34.164807896 +0800
++++ screen-mem-usage	2019-01-31 13:51:58.068810376 +0800
+@@ -3,7 +3,7 @@
+ total_mem=$(/usr/bin/free -m | /usr/bin/awk '$1 == "Mem:" { print $2 }')
+ 
+ while(true); do
+-  current_mem=$(/usr/bin/free -m | /usr/bin/awk '$1 == "-/+" { print $3 }')
++  current_mem=$(/usr/bin/free -m | /usr/bin/awk '$1 == "Mem:" { print $3 }')
+   echo "${current_mem}MB/${total_mem}MB"
+   sleep 3
+ done
