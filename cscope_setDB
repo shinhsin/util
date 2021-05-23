@@ -1,0 +1,38 @@
+#!/bin/bash
+
+FAIL()
+{
+	return 1;
+}
+
+if [[ -n "$1" && -n "$2" ]];then
+CSCOPE_DB="$1/$2.cscope"
+TAGS="$1/$2.taglist"
+tags="$1/$2.taglist"
+tag="$1/$2.taglist"
+
+    if [[ -f "$CSCOPE_DB"  ]];then
+	export CSCOPE_DB
+        echo "set cscope db to $CSCOPE_DB"
+    else
+        echo "Invalid cscope file $CSCOPE_DB, skip setting cscope."
+	CSCOPE_DB=
+	FAIL
+    fi
+    if [[ -f "$TAGS"  ]];then
+        export TAGS
+        export tags
+        export tag
+        echo "set ctag to $TAGS"
+    else
+        echo "Invalid ctag file $TAGS, skip setting ctag."
+	TAGS=
+	tags=
+	tag=
+	FAIL
+    fi
+else
+	echo "Usage: $0 DB_DIR DBname"
+	FAIL
+fi
+
